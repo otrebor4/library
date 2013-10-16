@@ -19,10 +19,10 @@ template<class T>
 list<T> sortKArrays( T ** arrays, int k, int size [])
 {
 	list<T> out; //final sorted list
-	heap< pairKeyComp<T,pair<int,int>> > minHeap(k); //pairKeyComp used to sort by balue and store array index, and positin index
+	heap< pairKeyComp<T,pair<int,int>> > minHeap(k); //pairKeyComp used to sort by value and store array index, and positin index
 	for(int i = 0; i < k; i++)
 	{
-		pair<int,int> pos(i,0);
+		pair<int,int> pos(i,0); //item info, come from i array, item position 0
 		pairKeyComp<T,pair<int,int> > pair(arrays[i][0], pos ); //add fist item from each array to the minheap
 		minHeap.push(pair);
 	}
