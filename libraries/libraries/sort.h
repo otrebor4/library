@@ -36,7 +36,7 @@ list<T> sortKArrays( T ** arrays, int k, int size [])
 		{
 			pos.first = l; 
 			pos.second = i;
-			pairKeyComp<T,pair<int,int> > pair(arrays[l][i], pos); //make data to push to the stack (item, itemInfo)
+			pairKeyComp<T,pair<int,int> > pair(arrays[l][i], pos); //make data to push to the minHeap (item, itemInfo)
 			minHeap.push(pair);//add item to minHeap
 		}
 		out.push_back(val.key);//add item to the output list
