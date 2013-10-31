@@ -80,7 +80,7 @@ private:
 			{
 				out = insert(val, (*head).left);
 			}
-			else if(val > (*head).data){
+			else{
 				out = insert(val, (*head).right);
 			}
 			UpdateHeight(head);
@@ -290,6 +290,11 @@ public:
 		return  *getNode(val) != NULL;
 	}
 
+	bool empty()
+	{
+		return root == NULL;
+	}
+
 	void print()
 	{
 		print(root);
@@ -308,6 +313,16 @@ public:
 	int getLeafCount()
 	{
 		return countLeafs(root);
+	}
+
+	T removeSmaller()
+	{
+		return removeLast(root, false);
+	}
+
+	T removeBiger()
+	{
+		return removeLast(root, true);
 	}
 
 	T remove(T val)

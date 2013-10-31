@@ -9,23 +9,25 @@ class pairKeyComp
 public:
 	K key;
 	V value;
-	pairKeyComp(pairKeyComp & other)
+	pairKeyComp()
 	{
-		key = other.key;
-		value = other.value;
 	}
 	pairKeyComp(K _key, V _val)
 	{
 		key = _key;
 		value = _val;
 	}
-	pairKeyComp()
+	pairKeyComp(pairKeyComp<K,V> & other)
 	{
+		key = other.key;
+		value = other.value;
 	}
+	
+	
 
 };
 template<class K, class V>
-inline bool operator==(const pairKeyComp<K,V>& lhs, const pairKeyComp<K,V>& rhs){return lhs.key == rhs.key;}
+inline bool operator==(const pairKeyComp<K,V>& lhs, const pairKeyComp<K,V>& rhs){return lhs.key == rhs.key && lhs.value == rhs.value;}
 template<class K, class V>
 inline bool operator!=(const pairKeyComp<K,V>& lhs, const pairKeyComp<K,V>& rhs){return !operator==(lhs,rhs);}
 template<class K, class V>

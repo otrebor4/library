@@ -1,0 +1,20 @@
+(1,8) - (6,4)
+xxxxxxxxx 
+xxxxxxxxx 
+xxxxxxxxx 
+xxxxxxxxx 
+xxxxxx@@x 
+xxxxxxx@x 
+xxxxxxx@x 
+xxxx@@@@x 
+
+(1,1) - (6,0)
+x@@@@@@xx 
+x@xxxxxxx 
+xxxxxxxxx 
+xxxxxxxxx 
+xxxxxxxxx 
+xxxxxxxxx 
+xxxxxxxxx 
+xxxxxxxxx 
+

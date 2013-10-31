@@ -2,87 +2,115 @@
 #include <string>
 #include <list>
 
-#include "Heap.h"
-#include "medianQueue.h"
-#include "HashTable.h"
-#include "sort.h"
+#include "gridGraph.h"
+
 using namespace std;
 
-void testKList();
-
-void testMedia();
+string to_stringPair(std::pair<int,int> p)
+{
+	string s = "("+to_string( p.first) + "," + to_string(p.second)+")";
+	return s;
+}
 
 int main()
 {
-	hashTable<string,int> table;
-	table.put("one",1);
-	table.put("two",2);
-	cout << table.get("two") << " " << table.get("one");
-	system("pause");
-	return 0;
-}
-
-void testMedia()
-{
-	heap<int> minHeap;
-	medianQueue<int> media;
-	media.insert(1);
-	media.insert(100);
-	media.insert(3);
-	media.insert(4);
-	media.insert(2);
-	media.insert(50);
-	media.insert(14);
-	media.insert(30);
-	media.insert(20);
-	media.insert(2);
-	media.insert(0);
-
-	minHeap.push(1);
-	minHeap.push(100);
-	minHeap.push(3);
-	minHeap.push(4);
-	minHeap.push(2);
-	minHeap.push(50);
-	minHeap.push(14);
-	minHeap.push(30);
-	minHeap.push(20);
-	minHeap.push(2);
-	minHeap.push(0);
-	while(!minHeap.empty())
-	{
-		cout << minHeap.pop() << "  ";
-	}
-	cout << "\n";
-	while(!media.empty())
-	{
-		cout << media.extractMedian() << "\n";
-		system("pause");
-	}
-}
-
-void testKList()
-{
-	int const k = 30;
-	int size[k];
-	int ** arrays = new int*[k];
-
-	//create k sorted arrays
-	for(int i = 0; i < k; i++)
-	{
-		size[i] = rand()%100;
-		arrays[i] = new int[size[i]];
-		int start = rand()%25;
-		for(int j = 0; j < size[i]; j++)
-		{
-			arrays[i][j] = start;
-			start += rand()%5+1;
-		}
-	}
-
-	list<int> sortList = sortKArrays<int>(arrays,k,size);
 	
 
-	system("pause");
+	gridGraph g;
+	//ofstream out("out.txt");
+	cout << g.run("test.txt");
+	/*
+	g.load("test.txt");
+	
+	for(int i = 0; i < 2; i++)
+	{
+		std::pair<int,int> start = g.randPos();
+		std::pair<int,int> end = g.randPos();
+		out << to_stringPair(start) <<" - " << to_stringPair(end) << "\n";
+		out << g.findPath(start, end);
+		out << "\n";
+	}
+	out.close();
+	//g.run("test.txt");
+	//cout << "\n";
+	//g.run("in.txt");
+	/*
+	Graph<string,GraphType::Directed,double> graph;
+	graph.MakeEdge( "hall", "foyer", 3 );
+	graph.MakeEdge( "hall", "ocean", 2 );
+	graph.MakeEdge( "hall", "mountains", 1 );
 
+	graph.MakeEdge( "mountains", "hall", 1 );
+	graph.MakeEdge( "mountains", "foyer", 1 );
+	graph.MakeEdge( "mountains", "roof", 2 );
+
+	graph.MakeEdge( "roof", "forest", 3 );
+
+	graph.MakeEdge( "ocean", "hall", 2 );
+	graph.MakeEdge( "ocean", "shire", 1 );
+
+	graph.MakeEdge( "shire", "foyer", 1 );
+	graph.MakeEdge( "shire", "pit", 1 );
+
+	graph.MakeEdge( "pit", "foyer", 1 );
+	graph.MakeEdge( "pit", "dungeon", 3 );
+
+	graph.MakeEdge( "foyer", "hall", 3 );
+	graph.MakeEdge( "foyer", "dungeon", 2 );
+	graph.MakeEdge( "foyer", "shire", 1 );
+	graph.MakeEdge( "foyer", "pit", 1 );
+
+	graph.MakeEdge( "forest", "roof", 3 );
+	graph.MakeEdge( "forest", "dungeon", 3 );
+	graph.MakeEdge( "forest", "treasureRoom", 1 );
+
+	graph.MakeEdge( "dungeon", "foyer", 2 );
+	graph.MakeEdge( "dungeon", "treasureRoom", 12 );
+
+	graph.MakeEdge( "treasureRoom", "dungeon", 12 );
+	graph.MakeEdge( "treasureRoom", "forest", 1 );
+	Graph<string,GraphType::Directed, double> path;
+	path = dijkstra<string,GraphType::Directed,double>(graph,"hall", "treasureRoom");
+	/*
+	Graph<string, GraphType::Directed, double> G;
+	G.MakeEdge("(0,0)", "(0,1)", 1);
+	G.MakeEdge("(0,0)", "(0,1)", 2);
+
+	G.MakeEdge("(0,1)", "(0,0)", 3);
+	G.MakeEdge("(0,1)", "(0,2)", 4);
+	G.MakeEdge("(0,1)", "(1,0)", 2);
+
+	G.MakeEdge("(1,0)", "(0,1)", 1);
+	G.MakeEdge("(1,0)", "(1,1)", 2);
+	G.MakeEdge("(1,0)", "(2,0)", 5);
+
+	G.MakeEdge("(1,1)", "(0,1)", 2);
+	G.MakeEdge("(1,1)", "(1,0)", 3);
+	G.MakeEdge("(1,1)", "(1,2)", 4);
+	G.MakeEdge("(1,1)", "(2,1)", 7);
+
+	G.MakeEdge("(0,2)", "(0,1)", 1);
+	G.MakeEdge("(0,2)", "(1,2)", 2);
+
+	G.MakeEdge("(2,0)", "(1,0)", 2);
+	G.MakeEdge("(2,0)", "(2,1)", 3);
+
+	G.MakeEdge("(1,2)", "(0,2)", 5);
+	G.MakeEdge("(1,2)", "(1,1)", 1);
+	G.MakeEdge("(1,2)", "(2,2)", 2);
+
+	G.MakeEdge("(2,1)", "(1,1)", 6);
+	G.MakeEdge("(2,1)", "(2,0)", 3);
+	G.MakeEdge("(2,1)", "(2,2)", 8);
+
+	G.MakeEdge("(2,2)", "(1,2)", 2);
+	G.MakeEdge("(2,2)", "(2,1)", 3);
+	//(0,0)(0,1)(0,2)
+	//(1,0)(1,1)(1,2)
+	//(2,0)(2,1)(2,2)
+	G = dijkstra<string, GraphType::Directed,double>(G,"(0,0)", "(2,2)");
+	cout << "";
+	//*/
+	system("pause");
+	return 0;
 }

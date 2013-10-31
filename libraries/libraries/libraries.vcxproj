@@ -69,11 +69,26 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AVLTree.h" />
+    <ClInclude Include="basicGraph.h" />
     <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="BreadFirstSearch.h" />
+    <ClInclude Include="Dijkstra.h" />
+    <ClInclude Include="directedGraph.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="gridGraph.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="Heap.h" />
+    <ClInclude Include="listOp.h" />
     <ClInclude Include="pairKeyComp.h" />
+    <ClInclude Include="Set.h" />
     <ClInclude Include="sort.h" />
+    <ClInclude Include="TopologicalSorting.h" />
+    <ClInclude Include="weightGraph.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="in.txt" />
+    <Text Include="out.txt" />
+    <Text Include="test.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
