@@ -48,9 +48,9 @@ private:
 				for(int i = -1; i <= 1; i += 2)
 				{
 					if( y + i >= 0 && y + i < grid.size())
-						m_graph.MakeEdge(pair<int,int>(y,x), pair<int,int>(y+i, x), grid[y+i][x]);
+						m_graph.MakeEdge(pair<int,int>(x,y), pair<int,int>(x, y+i), grid[y+i][x]);
 					if( x + i >= 0 && x + i < grid[y].size())
-						m_graph.MakeEdge(pair<int,int>(y,x), pair<int,int>(y, x+i), grid[y][x+i]);
+						m_graph.MakeEdge(pair<int,int>(x,y), pair<int,int>(x+i, y), grid[y][x+i]);
 				}
 			}
 		}

@@ -18,7 +18,7 @@ int main()
 
 	gridGraph g;
 	//ofstream out("out.txt");
-	cout << g.run("test.txt");
+	cout << g.run("in.txt");
 	/*
 	g.load("test.txt");
 	
